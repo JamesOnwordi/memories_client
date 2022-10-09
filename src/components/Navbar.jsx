@@ -11,6 +11,16 @@ export default function Navbar({ currentUser, handleLogout }) {
 			<Link to="/profile">
 				profile
 			</Link>
+
+			<Link to="/newMemories">
+				<p>NewMemories</p>
+			</Link>
+      		<Link to="/memory">
+				<p>Memory</p>
+			</Link>
+      		<Link to="/memories">
+				<p>Memories</p>
+			</Link>
 		</>
 	 )
 

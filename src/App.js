@@ -3,6 +3,7 @@ import {
   Routes,
   Route,
   Navigate
+
 } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import Login from './components/pages/Login'
@@ -12,6 +13,9 @@ import Welcome from './components/pages/Welcome'
 import Navbar from './components/Navbar'
 import './App.css'
 import jwt_decode from 'jwt-decode'
+import NewMemories from './components/pages/NewMemories'
+import Memory from './components/pages/Memory'
+import Memories from './components/pages/Memories'
 
 function App() {
   // the currently logged in user will be stored up here in state
@@ -70,6 +74,23 @@ function App() {
           <Route 
             path="/profile"
             element={currentUser ? <Profile handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : <Navigate to="/login" />}
+          />
+
+          {/* newly added route so that we can get to view our pages */}
+          <Route 
+            path="/newMemories"
+            element={<NewMemories />}
+          />
+
+          <Route 
+            path="/memory"
+            element={<Memory  />}
+          />
+
+          {/* conditionally render auth locked routes */}
+          <Route 
+            path="/memories"
+            element={ <Memories  /> }
           />
 
         </Routes>
