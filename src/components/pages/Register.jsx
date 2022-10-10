@@ -14,7 +14,7 @@ export default function Register({ currentUser, setCurrentUser }) {
 	const handleSubmit = async e => {
 		e.preventDefault()
 		try {
-			// post fortm data to the backend
+			// post form data to the backend
 			const reqBody = {
 				name,
 				email, 
@@ -49,7 +49,7 @@ export default function Register({ currentUser, setCurrentUser }) {
 
 	return (
 		<div>
-			<h1>Register for an account:</h1>
+			<h2>Register for an account:</h2>
 
 			<p>{msg}</p>
 

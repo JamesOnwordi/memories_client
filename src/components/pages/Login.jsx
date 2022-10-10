@@ -47,7 +47,7 @@ export default function Login({ currentUser, setCurrentUser }) {
 
 	return (
 		<div>
-			<h1>Login to Your Account:</h1>
+			<h2>Login to Your Account:</h2>
 
 			<p>{msg}</p>
 
