@@ -9,10 +9,29 @@ export default function Memories(){
     const [deleted,setDeleted] = useState(1)
     const homePage = process.env.REACT_APP_SERVER_URL
     
+     // pull token from local storage
+     const token = localStorage.getItem('jwt')
+     // set request headers
+     const options = {
+     headers: {
+         "Authorization": token
+     }
+     }
+   
     useEffect(()=>{
+        
+    // pull token from local storage
+    const token = localStorage.getItem('jwt')
+    // set request headers
+    const options = {
+    headers: {
+        "Authorization": token
+    }
+    }
+
         const url = homePage+"/api-v1/memories"
         console.log(url)
-        axios.get(url)
+        axios.get(url,options)
         .then(response=>{
             console.log(response.data)
             const allMemories = response.data.map(memory=>{
@@ -35,7 +54,7 @@ export default function Memories(){
         const result = window.confirm("are you sure you want to delete this memory")
         console.log(result)
         if(result){
-            await axios.delete(homePage+"/api-v1/memories/"+id)
+            await axios.delete(homePage+"/api-v1/memories/"+id,options)
             let deleteCount = deleted
             console.log(deleteCount)
             setDeleted(deleteCount+1)
@@ -56,7 +75,9 @@ export default function Memories(){
                 </Link>
                 <p>{memory.note}</p>
                 <p>{memory.date}</p>
-                <button>Edit</button>
+                <Link to='/memories/:id/edit'>
+                    <button>Edit</button>
+                </Link>
                 <span> </span>
                 <button onClick={()=>handleDelete(memory.id)}>Delete</button>
             </div>

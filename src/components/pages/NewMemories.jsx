@@ -45,7 +45,9 @@ export default function NewMemories() {
     return (
       <>
         <h1>Create a new Memory!</h1>
-        
+
+        <input type='file'></input>
+
         <h3>{msg}</h3>
 
         <form 

@@ -98,7 +98,7 @@ function App() {
           />
 
           <Route 
-            path="/memories/edit"
+            path="/memories/:id/edit"
             element={ <EditMemories  /> }
           />
 
