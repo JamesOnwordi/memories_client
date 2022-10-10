@@ -5,24 +5,19 @@ export default function Navbar({ currentUser, handleLogout }) {
 		<>
 			{/* if the user is logged in... */}
 			<Link to="/">
-				<span onClick={handleLogout}>logout</span>
+				<span onClick={handleLogout}>Logout</span>
 			</Link>
 
 			<Link to="/profile">
-				profile
+				Profile
 			</Link>
 
-			<Link to="/newMemories">
-				<p>NewMemories</p>
-			</Link>
-      		<Link to="/memory">
-				<p>Memory</p>
-			</Link>
       		<Link to="/memories">
 				<p>Memories</p>
 			</Link>
-      		<Link to="/editMemories">
-				<p>EditMemories</p>
+
+			<Link to="/memories/new">
+				<p>Create new memory</p>
 			</Link>
 		</>
 	 )
@@ -31,11 +26,11 @@ export default function Navbar({ currentUser, handleLogout }) {
 		<>
 			{/* if the user is not logged in... */}
 			<Link to="/register">
-				register
+				Register
 			</Link>
 
 			<Link to="/login">
-				login
+				Login
 			</Link>
 		</>
 	 )
@@ -44,7 +39,7 @@ export default function Navbar({ currentUser, handleLogout }) {
 		<nav>
 			{/* user always sees this section */}
 			<Link to="/">
-				<p>User App</p>
+				<p>Home</p>
 			</Link>
 
 			{currentUser ? loggedIn : loggedOut}
