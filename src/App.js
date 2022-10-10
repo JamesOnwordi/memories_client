@@ -16,6 +16,7 @@ import jwt_decode from 'jwt-decode'
 import NewMemories from './components/pages/NewMemories'
 import Memory from './components/pages/Memory'
 import Memories from './components/pages/Memories'
+import EditMemories from './components/pages/EditMemories'
 
 function App() {
   // the currently logged in user will be stored up here in state
@@ -91,6 +92,11 @@ function App() {
           <Route 
             path="/memories"
             element={ <Memories  /> }
+          />
+
+          <Route 
+            path="/editMemories"
+            element={ <EditMemories  /> }
           />
 
         </Routes>
