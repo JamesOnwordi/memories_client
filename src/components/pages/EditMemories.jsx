@@ -21,7 +21,8 @@ export default function EditMemories(){
     const handleChange = (e) =>{
         console.log(e.target.value)
         console.log(data)
-        // console.log({...data}.note = 'a')
+        
+        console.log({...data}.note = 'a')
 
     }
     return(

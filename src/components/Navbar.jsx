@@ -21,7 +21,7 @@ export default function Navbar({ currentUser, handleLogout }) {
 							Profile
 						</Link>
 
-						<Link to="/newMemories">
+						<Link to="/memories/new">
 							<p>New Memories</p>
 						</Link>
 
