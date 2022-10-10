@@ -39,7 +39,7 @@ export default function Welcome({ currentUser, setCurrentUser }) {
 
 	return (
 		<div className='container mx-auto'>
-			<h1>Memories 📖</h1>
+			<h1 className='text-xl text-center font-bold my-5'>Memories 📖</h1>
 
 			{!currentUser ? noUser : yesUser}
 		</div>

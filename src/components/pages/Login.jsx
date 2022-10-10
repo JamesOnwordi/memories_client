@@ -46,18 +46,15 @@ export default function Login({ currentUser, setCurrentUser }) {
 	}
 
 	return (
-		<div className='w-full max-w-xs'>
-			<h2>Login to Your Account:</h2>
+		<div className='w-full max-w-xs mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'>
+			<h2 className='text-lg font-semibold mb-2'>Login to Your Account:</h2>
 
 			<p>{msg}</p>
 
-			<form
-				className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'
-				onSubmit={handleSubmit}
-			>
+			<form onSubmit={handleSubmit}>
 				<div className='mb-4'>
 					<label
-						className='block text-grey-700 text-sm font-bold mb-2'
+						className='block text-gray-700 text-sm font-bold mb-2'
 						htmlFor='email'
 					>
 						Email:
@@ -73,7 +70,7 @@ export default function Login({ currentUser, setCurrentUser }) {
 					/>
 				</div>
 
-				<div>
+				<div className='mb-4'>
 					<label
 						className='block text-gray-700 text-sm font-bold mb-2'
 						htmlFor='password'
