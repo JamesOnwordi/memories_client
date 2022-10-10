@@ -23,15 +23,11 @@ export default function Navbar({ currentUser, handleLogout }) {
 						<Link to="/newMemories">
 							<p>New Memories</p>
 						</Link>
-						<Link to="/memory">
-							<p>Memory</p>
-						</Link>
+
 						<Link to="/memories">
 							<p>Memories</p>
 						</Link>
-						<Link to="/editMemories">
-							<p>Edit Memories</p>
-						</Link>
+
 					</ul>
 				</div>
 			</div>
