@@ -58,7 +58,10 @@ function App() {
         <Routes>
           <Route 
             path="/"
-            element={<Welcome />}
+            element={<Welcome
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            />}
           />
 
           <Route 
@@ -79,13 +82,13 @@ function App() {
 
           {/* newly added route so that we can get to view our pages */}
           <Route 
-            path="/newMemories"
+            path="/memories/new"
             element={<NewMemories />}
           />
 
           <Route 
-            path="/memory"
-            element={<Memory  />}
+            path="/memories/:id"
+            element={<Memory />}
           />
 
           {/* conditionally render auth locked routes */}
@@ -95,7 +98,7 @@ function App() {
           />
 
           <Route 
-            path="/editMemories"
+            path="/memories/edit"
             element={ <EditMemories  /> }
           />
 
