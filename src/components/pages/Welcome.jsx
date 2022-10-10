@@ -10,8 +10,8 @@ export default function Welcome({ currentUser, setCurrentUser }) {
 			<Login
 				currentUser={currentUser}
 				setCurrentUser={setCurrentUser}
+				setDisplayLogin={setDisplayLogin}
 			/>
-			<button onClick={() => setDisplayLogin(false)}>Create an account</button>
 		</>
 	)
 
@@ -20,8 +20,8 @@ export default function Welcome({ currentUser, setCurrentUser }) {
 			<Register
 				currentUser={currentUser}
 				setCurrentUser={setCurrentUser}
+				setDisplayLogin={setDisplayLogin}
 			/>
-			<button onClick={() => setDisplayLogin(true)}>Login to your account</button>
 		</>
 	)
 
@@ -33,7 +33,7 @@ export default function Welcome({ currentUser, setCurrentUser }) {
 
 	const yesUser =(
 		<>
-			<p>Welcome to our app</p>
+			<p className='text-center text-lg'>Welcome to our app</p>
 		</>
 	)
 

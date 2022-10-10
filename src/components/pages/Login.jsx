@@ -3,7 +3,7 @@ import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import { Navigate } from 'react-router-dom'
 
-export default function Login({ currentUser, setCurrentUser }) {
+export default function Login({ currentUser, setCurrentUser, setDisplayLogin }) {
 	// state for the controlled form
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
@@ -46,7 +46,7 @@ export default function Login({ currentUser, setCurrentUser }) {
 	}
 
 	return (
-		<div className='w-full max-w-xs mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'>
+		<div className='w-full max-w-xs mx-auto bg-white shadow-md rounded px-5 pt-6 pb-8 mb-4'>
 			<h2 className='text-lg font-semibold mb-2'>Login to Your Account:</h2>
 
 			<p>{msg}</p>
@@ -88,12 +88,21 @@ export default function Login({ currentUser, setCurrentUser }) {
 					/>
 				</div>
 
-				<button
-					className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
-					type="submit"
-				>
-					Login
-				</button>
+				<div className='flex justify-between'>
+					<button
+						className='text-blue-700 hover:underline'
+						onClick={() => setDisplayLogin(false)}
+					>
+						Create a new account
+					</button>
+
+					<button
+						className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+						type="submit"
+					>
+						Login
+					</button>
+				</div>
 			</form>
 		</div>
 	)

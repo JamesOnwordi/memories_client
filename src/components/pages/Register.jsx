@@ -3,7 +3,7 @@ import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import { Navigate } from 'react-router-dom'
 
-export default function Register({ currentUser, setCurrentUser }) {
+export default function Register({ currentUser, setCurrentUser, setDisplayLogin }) {
 	// state for the controlled form
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
@@ -54,7 +54,7 @@ export default function Register({ currentUser, setCurrentUser }) {
 			<p>{msg}</p>
 
 			<form
-				className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'
+				className='bg-white shadow-md rounded px-5 pt-6 pb-8 mb-4'
 				onSubmit={handleSubmit}
 			>
 				<div className='mb-4'>
@@ -114,12 +114,21 @@ export default function Register({ currentUser, setCurrentUser }) {
 					/>
 				</div>
 
-				<button
-					className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
-					type="submit"
-				>
-					Register
-				</button>
+				<div className='flex justify-between'>
+					<button
+						className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+						type="submit"
+					>
+						Register
+					</button>
+
+					<button
+						className='text-blue-700 hover:underline'
+						onClick={() => setDisplayLogin(true)}
+					>
+						Login to existing account
+					</button>
+				</div>
 			</form>
 		</div>
 	)
