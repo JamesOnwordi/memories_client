@@ -46,31 +46,57 @@ export default function Login({ currentUser, setCurrentUser }) {
 	}
 
 	return (
-		<div>
+		<div className='w-full max-w-xs'>
 			<h2>Login to Your Account:</h2>
 
 			<p>{msg}</p>
 
-			<form onSubmit={handleSubmit}>
-				<label htmlFor='email'>Email:</label>
-				<input 
-					type="email"
-					id="email"
-					placeholder='your email...'
-					onChange={e => setEmail(e.target.value)}
-					value={email}
-				/>
+			<form
+				className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'
+				onSubmit={handleSubmit}
+			>
+				<div className='mb-4'>
+					<label
+						className='block text-grey-700 text-sm font-bold mb-2'
+						htmlFor='email'
+					>
+						Email:
+					</label>
 
-				<label htmlFor='password'>Password:</label>
-				<input 
-					type="password"
-					id="password"
-					placeholder='password...'
-					onChange={e => setPassword(e.target.value)}
-					value={password}
-				/>
+					<input
+						className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+						type="email"
+						id="email"
+						placeholder='your email...'
+						onChange={e => setEmail(e.target.value)}
+						value={email}
+					/>
+				</div>
 
-				<button type="submit">Login</button>
+				<div>
+					<label
+						className='block text-gray-700 text-sm font-bold mb-2'
+						htmlFor='password'
+					>
+						Password: 
+					</label>
+					
+					<input
+						className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+						type="password"
+						id="password"
+						placeholder='password...'
+						onChange={e => setPassword(e.target.value)}
+						value={password}
+					/>
+				</div>
+
+				<button
+					className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+					type="submit"
+				>
+					Login
+				</button>
 			</form>
 		</div>
 	)

@@ -48,40 +48,72 @@ export default function Register({ currentUser, setCurrentUser }) {
 	}
 
 	return (
-		<div>
+		<div className='w-full max-w-xs'>
 			<h2>Register for an account:</h2>
 
 			<p>{msg}</p>
 
-			<form onSubmit={handleSubmit}>
-				<label htmlFor='name'>Name:</label>
-				<input 
+			<form
+				className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'
+				onSubmit={handleSubmit}
+			>
+				<label
+					className='block text-gray-700 text-sm font-bold mb-2'
+					htmlFor='name'
+				>
+					Name:
+				</label>
+
+				<input
+					className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
 					type="text"
 					id="name"
 					placeholder='your username...'
 					onChange={e => setName(e.target.value)}
 					value={name}
+					required
 				/>
 
-				<label htmlFor='email'>Email:</label>
-				<input 
+				<label
+					className='block text-gray-700 text-sm font-bold mb-2'
+					htmlFor='email'
+				>
+					Email:
+				</label>
+
+				<input
+					className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
 					type="email"
 					id="email"
 					placeholder='your email...'
 					onChange={e => setEmail(e.target.value)}
 					value={email}
+					required
 				/>
 
-				<label htmlFor='password'>Password:</label>
-				<input 
+				<label
+					className='block text-gray-700 text-sm font-bold mb-2'
+					htmlFor='password'
+				>
+					Password:
+				</label>
+				
+				<input
+					className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
 					type="password"
 					id="password"
 					placeholder='password...'
 					onChange={e => setPassword(e.target.value)}
 					value={password}
+					required
 				/>
 
-				<button type="submit">Register</button>
+				<button
+					className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+					type="submit"
+				>
+					Register
+				</button>
 			</form>
 		</div>
 	)
