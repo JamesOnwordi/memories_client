@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 
 export default function Navbar({ currentUser, handleLogout }) {
+
 	const loggedIn = (
 		<div className='w-full h-[90px] bg-black'>
 			<div className=' max-w-[1240px] mx-auto px-4 flex justify-between items-center h-full'>
@@ -58,7 +59,7 @@ export default function Navbar({ currentUser, handleLogout }) {
 		<nav>
 			{/* user always sees this section */}
 			<Link to="/">
-				<p>User App</p>
+				<p>Home</p>
 			</Link>
 
 			{currentUser ? loggedIn : loggedOut}
