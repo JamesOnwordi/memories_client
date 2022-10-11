@@ -21,11 +21,11 @@
     height: 80%;
     position: relative;
     z-index: 1;
-    white-space: nowrap;
+    white-space: pre;
     will-change: transform; }
     .flicking-camera > * {
       display: inline-block;
-      white-space: normal;
+      white-space: nowrap;
       vertical-align: top; }
 
       .flicking-viewport {
@@ -51,8 +51,8 @@
           flex-shrink: 0; }
 
 .panel-image {
-  width: 1000px;
-  height: 562px;
+  width: 1200px;
+  height: 675px;
 }
 
 

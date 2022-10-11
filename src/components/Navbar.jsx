@@ -5,11 +5,11 @@ import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 export default function Navbar({ currentUser, handleLogout }) {
 
 	const loggedIn = (
-		<div className='w-full h-[90px] bg-black'>
+		<div className='w-full h-[50px] bg-black'>
 			<div className=' max-w-[1240px] mx-auto px-4 flex justify-between items-center h-full'>
-				<div>
+				<Link to="/">
 					<h1 className='text-[#00d8ff]'>Memories</h1>
-				</div>
+				</Link>
 				<div className='hidden md:flex'>
 					<ul className='flex text-white items-center'>
 						{/* if the user is logged in... */}
@@ -35,20 +35,20 @@ export default function Navbar({ currentUser, handleLogout }) {
 		</div>
 	)
 	const loggedOut = (
-		<div className='w-full h-[90px] bg-black'>
+		<div className='w-full h-[50px] bg-black'>
 			<div className=' max-w-[1240px] mx-auto px-4 flex justify-between items-center h-full'>
-				<div>
-					<h1 className='text-[#00d8ff]'>DEFI</h1>
-				</div>
+				<Link to="/">
+					<h1 className='text-[#00d8ff]'>Memories</h1>
+				</Link>
 				<div className='hidden md:flex'>
 					<ul className='flex text-white items-center'>
 						{/* if the user is not logged in... */}
 						<Link to="/register">
-							register
+							Register
 						</Link>
 
 						<Link to="/login">
-							login
+							Login
 						</Link>
 					</ul>
 				</div>
@@ -58,10 +58,6 @@ export default function Navbar({ currentUser, handleLogout }) {
 	return (
 		<nav>
 			{/* user always sees this section */}
-			<Link to="/">
-				<p>Home</p>
-			</Link>
-
 			{currentUser ? loggedIn : loggedOut}
 		</nav>
 	)
