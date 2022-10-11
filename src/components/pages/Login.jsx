@@ -3,7 +3,7 @@ import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import { Navigate } from 'react-router-dom'
 
-export default function Login({ currentUser, setCurrentUser, setDisplayLogin }) {
+export default function Login({ currentUser, setCurrentUser, welcomePage, setDisplayLogin }) {
 	// state for the controlled form
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
@@ -39,6 +39,16 @@ export default function Login({ currentUser, setCurrentUser, setDisplayLogin }) 
 			}
 		}
  	}
+
+	const welcomePageButton = (
+		<button
+			className='text-blue-700 hover:underline hover:cursor-pointer'
+			type='button'
+			onClick={() => setDisplayLogin(false)}
+		>
+			Create a new account
+		</button>
+	)
 
 	// conditionally render a navigate component
 	if (currentUser) {
@@ -88,14 +98,10 @@ export default function Login({ currentUser, setCurrentUser, setDisplayLogin }) 
 					/>
 				</div>
 
-				<div className='flex justify-between'>
-					<button
-						className='text-blue-700 hover:underline'
-						onClick={() => setDisplayLogin(false)}
-					>
-						Create a new account
-					</button>
+				<div className='flex justify-between items-center'>
 
+					{welcomePage ? welcomePageButton : ''}
+					
 					<button
 						className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
 						type="submit"

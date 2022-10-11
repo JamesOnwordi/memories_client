@@ -1,12 +1,8 @@
-.main{
-    display:grid;
-    grid-template-columns: 0.2fr 1fr 0.2fr;
-}.sideBar{
-    background-color: rgb(147, 231, 231);
-}.developersZone{
+.developersZone{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-}.centerItem{
+}
+.centerItem{
     display: flex;
     justify-content: center;
     align-items: center;
