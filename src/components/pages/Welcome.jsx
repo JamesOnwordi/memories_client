@@ -65,7 +65,7 @@ export default function Welcome({ currentUser, setCurrentUser }) {
 	)
 
 	return (
-		<div>
+		<div className='flex flex-col justify-between'>
 			<div className='container mx-auto'>
 				<h1 className='text-xl text-center font-bold my-5'>Memories 📖</h1>
 
@@ -73,7 +73,7 @@ export default function Welcome({ currentUser, setCurrentUser }) {
 			</div>
 
 
-			<footer className='absolute bottom-0'>
+			<footer>
 				<h3 className="text-sm font-medium text-gray-900 text-center mb-5" >About the Developers</h3>
 
 				<div className='developersZone'>
