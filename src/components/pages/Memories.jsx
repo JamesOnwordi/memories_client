@@ -1,3 +1,5 @@
+
+
 import axios from 'axios'
 import {useState,useEffect} from 'react'
 import { Link } from 'react-router-dom'
@@ -29,7 +31,7 @@ export default function Memories(){
     }
     }
 
-        const url = homePage+"/api-v1/memories"
+        const url = process.env.REACT_APP_SERVER_URL+"/api-v1/memories"
         console.log(url)
         axios.get(url,options)
         .then(response=>{
@@ -54,7 +56,7 @@ export default function Memories(){
         const result = window.confirm("are you sure you want to delete this memory")
         console.log(result)
         if(result){
-            await axios.delete(homePage+"/api-v1/memories/"+id,options)
+            await axios.delete(process.env.REACT_APP_SERVER_URL+"/api-v1/memories/"+id,options)
             let deleteCount = deleted
             console.log(deleteCount)
             setDeleted(deleteCount+1)
@@ -70,8 +72,8 @@ export default function Memories(){
             
             <div key={memory.id} style={{margin:"30px"}}>
                 <p>{memory.title}</p>
-                <Link to="/">
-                <img src={memory.image}/>
+                <Link to={`/memories/${memory.id}`}>
+                <img src={memory.image.url} alt={`img${id}`}/>
                 </Link>
                 <p>{memory.note}</p>
                 <p>{memory.date}</p>
