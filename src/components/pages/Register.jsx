@@ -3,7 +3,7 @@ import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import { Navigate } from 'react-router-dom'
 
-export default function Register({ currentUser, setCurrentUser }) {
+export default function Register({ currentUser, setCurrentUser, setDisplayLogin }) {
 	// state for the controlled form
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
@@ -48,40 +48,87 @@ export default function Register({ currentUser, setCurrentUser }) {
 	}
 
 	return (
-		<div>
-			<h2>Register for an account:</h2>
+		<div className='w-full max-w-xs mx-auto'>
+			<h2 className='text-lg font-semibold'>Register for an account:</h2>
 
 			<p>{msg}</p>
 
-			<form onSubmit={handleSubmit}>
-				<label htmlFor='name'>Name:</label>
-				<input 
-					type="text"
-					id="name"
-					placeholder='your username...'
-					onChange={e => setName(e.target.value)}
-					value={name}
-				/>
+			<form
+				className='bg-white shadow-md rounded px-5 pt-6 pb-8 mb-4'
+				onSubmit={handleSubmit}
+			>
+				<div className='mb-4'>
+					<label
+						className='block text-gray-700 text-sm font-bold mb-2'
+						htmlFor='name'
+					>
+						Name:
+					</label>
 
-				<label htmlFor='email'>Email:</label>
-				<input 
-					type="email"
-					id="email"
-					placeholder='your email...'
-					onChange={e => setEmail(e.target.value)}
-					value={email}
-				/>
+					<input
+						className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+						type="text"
+						id="name"
+						placeholder='your username...'
+						onChange={e => setName(e.target.value)}
+						value={name}
+						required
+					/>
+				</div>
 
-				<label htmlFor='password'>Password:</label>
-				<input 
-					type="password"
-					id="password"
-					placeholder='password...'
-					onChange={e => setPassword(e.target.value)}
-					value={password}
-				/>
+				<div className='mb-4'>
+					<label
+						className='block text-gray-700 text-sm font-bold mb-2'
+						htmlFor='email'
+					>
+						Email:
+					</label>
 
-				<button type="submit">Register</button>
+					<input
+						className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+						type="email"
+						id="email"
+						placeholder='your email...'
+						onChange={e => setEmail(e.target.value)}
+						value={email}
+						required
+					/>
+				</div>
+
+				<div className='mb-4'>
+					<label
+						className='block text-gray-700 text-sm font-bold mb-2'
+						htmlFor='password'
+					>
+						Password:
+					</label>
+					
+					<input
+						className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+						type="password"
+						id="password"
+						placeholder='password...'
+						onChange={e => setPassword(e.target.value)}
+						value={password}
+						required
+					/>
+				</div>
+
+				<div className='flex justify-between'>
+					<button
+						className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+						type="submit"
+					>
+						Register
+					</button>
+
+					<button
+						className='text-blue-700 hover:underline'
+						onClick={() => setDisplayLogin(true)}
+					>
+						Login to existing account
+					</button>
+				</div>
 			</form>
 		</div>
 	)
