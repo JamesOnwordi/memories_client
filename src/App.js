@@ -54,7 +54,7 @@ function App() {
         />
       </header>
 
-      <div className="App">
+      <div>
         <Routes>
           <Route 
             path="/"
