@@ -35,7 +35,7 @@ export default function EditMemories(){
             }
             const response = await axios.put(url, formData, options)
             console.log(response.data)
-            
+            navigate('/memories')
         } catch (error) {
             console.log(error)
             if (error.response) {
@@ -44,40 +44,45 @@ export default function EditMemories(){
         }
     }
     return(
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor='image-upload'>Add more photos: </label>
-                <input 
-                    type='file'
-                    id='image-upload'
-                    accept='images/*'
-                    multiple
-                    ref={inputRef}
-                    onChange={e => setFormImg(e.target.files)}
-                />
-            </div>
+        <div>
+            <h1>Edit this memory</h1>
 
-            <div>
-                <label htmlFor='title'>Edit title: </label>
-                <input
-                    type='text'
-                    id='title'
-                    onChange={e => setFormTitle(e.target.value)}
-                    value={formTitle}
-                />
-            </div>
+            <p>{msg}</p>
 
-            <div>
-                <label htmlFor='note'>Edit note: </label>
-                <textarea
-                id='note'
-                onChange={e => setFormNote(e.target.value)}
-                value={formNote}
-                />
-            </div>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label htmlFor='image-upload'>Add more photos: </label>
+                    <input 
+                        type='file'
+                        id='image-upload'
+                        accept='images/*'
+                        multiple
+                        ref={inputRef}
+                        onChange={e => setFormImg(e.target.files)}
+                    />
+                </div>
 
-            <button type="submit">Memorize</button>
-        </form>
+                <div>
+                    <label htmlFor='title'>Edit title: </label>
+                    <input
+                        type='text'
+                        id='title'
+                        onChange={e => setFormTitle(e.target.value)}
+                        value={formTitle}
+                    />
+                </div>
+
+                <div>
+                    <label htmlFor='note'>Edit note: </label>
+                    <textarea
+                    id='note'
+                    onChange={e => setFormNote(e.target.value)}
+                    value={formNote}
+                    />
+                </div>
+
+                <button type="submit">Memorize</button>
+            </form>
+        </div>
     )
-
 }
