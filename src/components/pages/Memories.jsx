@@ -75,7 +75,7 @@ export default function Memories(){
                 </Link>
                 <p>{memory.note}</p>
                 <p>{memory.date}</p>
-                <Link to='/memories/:id/edit'>
+                <Link to={`/memories/${memory.id}/edit`}>
                     <button>Edit</button>
                 </Link>
                 <span> </span>
