@@ -11,7 +11,9 @@ export default function Memory() {
   const flicking0 = useRef();
   const flicking1 = useRef();
   const [plugins, setPlugins] = useState([]);
-  const [memory, setMemory] = useState([]);
+  const [memory, setMemory] = useState({});
+  const [panelImages, setPanelImages] = useState([])
+  const [thumbImages, setThumbImages] = useState([])
 
   useEffect(() => {
     // pull token from local storage
@@ -26,11 +28,29 @@ export default function Memory() {
     console.log(url)
     axios.get(process.env.REACT_APP_SERVER_URL + '/api-v1' + url, options)
       .then(response => {
-        const memory = {
-          ...response.data
-        }
-        setMemory(memory)
-        console.log(memory)
+        const foundMemory = response.data
+        setMemory(foundMemory)
+        console.log(foundMemory)
+        // map images for panels
+        const panelImages = foundMemory.images.map((image, i) => {
+          return (
+            <div className="flicking-panel full has-background-primary">
+              <img className="panel-image" src={image.url} alt={`image${i}`} />
+            </div>
+          )
+        })
+        setPanelImages(panelImages)
+        // map images for thumbnails
+        const thumbImages = foundMemory.images.map((image, i) => {
+          return (
+            <div className='flicking-panel full has-background-primary'>
+              <img className='thumb-image' src={image.url} alt={`image${i}`} />
+            </div>
+          )
+        })
+        setThumbImages(thumbImages)
+      }).catch(error => {
+        console.log(error)
       })
   }, []);
   useEffect(() => {
@@ -50,7 +70,6 @@ export default function Memory() {
     })]);
   }, []);
 
-
   return <div>
     <Flicking ref={flicking0}
       className="mb-4"
@@ -59,56 +78,20 @@ export default function Memory() {
       align="center"
       autoResize={true}
       adaptive={true}
-      circular={true}>
-      {/* {memoryImages} */}
-      <div className="flicking-panel full has-background-primary">
-      <img className="panel-image" src="https://res.cloudinary.com/ddmvwck8i/image/upload/v1665364312/cld-sample-5.jpg" alt="image1" />
-    </div>
-    <div className="flicking-panel full has-background-primary">
-      <img className="panel-image" src="https://res.cloudinary.com/ddmvwck8i/image/upload/v1665364310/cld-sample.jpg" alt="image2" />
-    </div>
-    <div className="flicking-panel full has-background-primary">
-      <img className="panel-image" src="https://res.cloudinary.com/ddmvwck8i/image/upload/v1665364311/cld-sample-2.jpg" alt="image3" />
-    </div>
-    <div className="flicking-panel full has-background-primary">
-      <img className="panel-image" src="https://res.cloudinary.com/ddmvwck8i/image/upload/v1665364311/cld-sample-3.jpg" alt="image4" />
-    </div>
-    <div className="flicking-panel full has-background-primary">
-      <img className="panel-image" src="https://res.cloudinary.com/ddmvwck8i/image/upload/v1665364312/cld-sample-5.jpg" alt="image5" />
-    </div>
-    <div className="flicking-panel full has-background-primary">
-      <img className="panel-image" src="https://res.cloudinary.com/ddmvwck8i/image/upload/v1665364312/cld-sample-4.jpg" alt="image6" />
-    </div>
+      circular={true}
+    >
+      {panelImages}
     </Flicking>
+
     <Flicking ref={flicking1}
       moveType="freeScroll"
       bounce={30}
       align="center"
       autoResize={true}
       adaptive={true}
-      circular={true} >
-    {/* {const images = memory.images.map(function (image, i) {
-        return <div className="flicking-panel thumb has-background-primary">
-          <img className="thumb-image" src={image.url} alt="image1" />
-        </div>
-      })}  */}
-      
-      <div className="flicking-panel thumb has-background-primary">
-        <img className="thumb-image" src="https://res.cloudinary.com/ddmvwck8i/image/upload/v1665364310/cld-sample.jpg" alt="image2" />
-      </div>
-      <div className="flicking-panel thumb has-background-primary">
-        <img className="thumb-image" src="https://res.cloudinary.com/ddmvwck8i/image/upload/v1665364311/cld-sample-2.jpg" alt="image3" />
-      </div>
-      <div className="flicking-panel thumb has-background-primary">
-        <img className="thumb-image" src="https://res.cloudinary.com/ddmvwck8i/image/upload/v1665364311/cld-sample-3.jpg" alt="image4" />
-      </div>
-      <div className="flicking-panel thumb has-background-primary">
-        <img className="thumb-image" src="https://res.cloudinary.com/ddmvwck8i/image/upload/v1665364312/cld-sample-5.jpg" alt="image5" />
-      </div>
-      <div className="flicking-panel thumb has-background-primary">
-        <img className="thumb-image" src="https://res.cloudinary.com/ddmvwck8i/image/upload/v1665364312/cld-sample-4.jpg" alt="image6" />
-      </div>
-
+      circular={true}
+    >
+      {thumbImages}
     </Flicking>
     <div class="antialiased mx-auto max-w-screen-xl">
       <h3 class="mb-4 text-lg font-semibold text-gray-900">Comments</h3>
