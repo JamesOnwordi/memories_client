@@ -1,13 +1,16 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
 
 export default function Profile({ currentUser, handleLogout }) {
 	// state for the secret message (aka user privilaged data)
 	const [msg, setMsg] = useState('')
 
+
+
 	// useEffect for getting the user data and checking auth
 	useEffect(() => {
-	const fetchData = async () => {
+		const fetchData = async () => {
 			try {
 				// get the token from local storage
 				const token = localStorage.getItem('jwt')
@@ -37,14 +40,21 @@ export default function Profile({ currentUser, handleLogout }) {
 		fetchData()
 	})
 	return (
-		<div>
-			<h1>Hello, {currentUser.name}</h1>
-
-			<p>your email is {currentUser.email}</p>
-
-			<h2>Here is the secret message that is only availible to users of User App:</h2>
-
-			<h3>{msg}</h3>
+		<div class="rounded-3xl overflow-hidden shadow-xl mx-auto max-w-screen-xl my-3 bg-blue-500">
+			<img src="https://i.imgur.com/dYcYQ7E.png" class="w-full" alt="pbackground" />
+			<div class="flex justify-center -mt-8">
+				<img src="https://i.imgur.com/8Km9tLL.jpg" class="rounded-5xl border-solid border-white border-2 -mt-1" alt="profilePic" />
+			</div>
+			<div class="text-center px-3 pb-6 pt-2">
+				<h3 class="text-white text-xl bold font-sans">{currentUser.name}</h3>
+				<p class="mt-2 font-sans text-xl font-light text-white">{currentUser.email}</p>
+			</div>
+			<div class="flex justify-center pb-3 text-white">
+				<div class="text-center text-xl">
+					<h2>{currentUser.memories}</h2>
+					<span>Memories</span>
+				</div>
+			</div>
 		</div>
 	)
 }
