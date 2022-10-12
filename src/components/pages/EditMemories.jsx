@@ -1,4 +1,5 @@
 import axios from "axios"
+import { useEffect } from "react"
 import { useState, useRef } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 
@@ -11,6 +12,26 @@ export default function EditMemories(){
     const { id } = useParams()
     const navigate = useNavigate()
     const inputRef = useRef(null)
+
+    useEffect(()=>{
+        const token = localStorage.getItem('jwt')
+        // set request headers
+        const options = {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            "Authorization": token
+          }
+        }
+
+        const url = process.env.REACT_APP_SERVER_URL+'/api-v1/memories/'+id
+        axios.get(url,options)
+        .then(response=>{
+            const data = response.data
+            setFormTitle(data.title)
+            setFormNote(data.note)
+        })
+        
+    },[])
 
     const handleSubmit = async e =>{
         e.preventDefault()
@@ -44,12 +65,18 @@ export default function EditMemories(){
         }
     }
     return(
-        <div>
-            <h1>Edit this memory</h1>
+        <div className='text-center'>
+
+            <p>-</p>
+            <h1 className='text-xl'>Edit this memory</h1>
+            <p>-</p>
 
             <p>{msg}</p>
 
             <form onSubmit={handleSubmit}>
+
+            <div className='flex ...'>
+                <div className='flex-1 ...'>
                 <div>
                     <label htmlFor='image-upload'>Add more photos: </label>
                     <input 
@@ -61,27 +88,38 @@ export default function EditMemories(){
                         onChange={e => setFormImg(e.target.files)}
                     />
                 </div>
+                </div>
 
-                <div>
-                    <label htmlFor='title'>Edit title: </label>
+                <div className='flex-1 ... bg-slate-400'>
+                <div className=' text-3xl mt-6 '>
+                    <label htmlFor='title'></label>
                     <input
+                        className='text-center'
                         type='text'
                         id='title'
+                        placeholder="Title"
                         onChange={e => setFormTitle(e.target.value)}
                         value={formTitle}
                     />
                 </div>
 
-                <div>
-                    <label htmlFor='note'>Edit note: </label>
+                <div className=' text-1xl my-8'>
+                    <label htmlFor='note'></label>
                     <textarea
+                    className='text-center'
                     id='note'
+                    cols='90'
+                    rows='23'
+                    placeholder="Click here to Write Note"
                     onChange={e => setFormNote(e.target.value)}
                     value={formNote}
                     />
                 </div>
 
-                <button type="submit">Memorize</button>
+            </div>
+        </div>
+        <p>-</p>
+          <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">Submit Memory</button>
             </form>
         </div>
     )
