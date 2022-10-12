@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Dropzone from 'react-dropzone'
+import { useDropzone } from 'react-dropzone'
 import axios from 'axios'
 import '../../Style/Welcome.css'
 
@@ -12,6 +12,7 @@ export default function NewMemories() {
   
     const inputRef = useRef(null)
     const navigate = useNavigate()
+    const { acceptedFiles, getRootProps, getInputProps } = useDropzone()
   
     const handleSubmit = async e => {
       e.preventDefault()
@@ -56,23 +57,14 @@ export default function NewMemories() {
           
         >
           <div className='flex ...'>
-            <Dropzone onDrop={acceptedFiles => {
-              console.log(acceptedFiles)
-            }}>
-              {({getRootProps, getInputProps}) => (
-                <div className='flex-1 ...'>
-                  <label htmlFor='image-upload'>Upload photos: </label>
-                  <input 
-                    type='file'
-                    id='image-upload'
-                    accept='image/*'
-                    multiple
-                    ref={inputRef}
-                    onChange={e => setFormImg(e.target.files)}
-                  />
-                </div>
-              )}
-            </Dropzone>
+            <section>
+              <div {...getRootProps({className: 'dropzone'})}>
+                <input {...getRootProps()}
+                  id=''
+                />
+                <p>dragin and droppin</p>
+              </div>
+            </section>
 
             <div className='flex-1 ... bg-slate-400'>
               <div className='text-3xl mt-4'>
