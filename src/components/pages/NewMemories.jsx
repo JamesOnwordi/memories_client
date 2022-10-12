@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Dropzone from 'react-dropzone'
 import axios from 'axios'
 import '../../Style/Welcome.css'
 
@@ -45,65 +46,64 @@ export default function NewMemories() {
   
     return (
       <div className='text-center'>
-        <p>-</p>
-        <h1 className='text-xl'>Create a new Memory!</h1>
-        <p>-</p>
+        <h1 className='text-xl mt-4 mb-8'>Create a new Memory!</h1>
 
-        <h3>{msg}</h3>
+        <h3 className='text-center'>{msg}</h3>
 
         <form 
           onSubmit={handleSubmit}
           encType='multipart/form'
           
         >
-        <div className='flex ...'>
-          <div className='flex-1 ...'>
-          <div>
-            <label htmlFor='image-upload'>Upload photos: </label>
-            <input 
-              type='file'
-              id='image-upload'
-              accept='images/*'
-              multiple
-              ref={inputRef}
-              onChange={e => setFormImg(e.target.files)}
-            />
-          </div>
-        </div>
+          <div className='flex ...'>
+            <Dropzone onDrop={acceptedFiles => {
+              console.log(acceptedFiles)
+            }}>
+              {({getRootProps, getInputProps}) => (
+                <div className='flex-1 ...'>
+                  <label htmlFor='image-upload'>Upload photos: </label>
+                  <input 
+                    type='file'
+                    id='image-upload'
+                    accept='image/*'
+                    multiple
+                    ref={inputRef}
+                    onChange={e => setFormImg(e.target.files)}
+                  />
+                </div>
+              )}
+            </Dropzone>
 
-        <div className='flex-1 ... bg-slate-400'>
-          <p> - </p>
-          <div className=' text-3xl'>
-            <label htmlFor='title'> </label>
-            <input
-              type='text'
-              id='title'
-              className='text-center'
-              placeholder='Title'
-              onChange={e => setFormTitle(e.target.value)}
-              value={formTitle}
-            />
-          </div>
+            <div className='flex-1 ... bg-slate-400'>
+              <div className='text-3xl mt-4'>
+                <label htmlFor='title'> </label>
+                <input
+                  type='text'
+                  id='title'
+                  className='text-center'
+                  placeholder='Title'
+                  onChange={e => setFormTitle(e.target.value)}
+                  value={formTitle}
+                />
+              </div>
   
-          <div className=' text-1xl'>
-            <label htmlFor='note'> </label>
-            <textarea
-            id='note'
-            cols='90'
-            rows='23'
-            class='m-8 text-center'
-            style={{backgroundImage:""}}
-            onChange={e => setFormNote(e.target.value)}
-            placeholder='Click to Begin Note Here'
-            value={formNote}
-            />
+              <div className=' text-1xl'>
+                <label htmlFor='note'> </label>
+                <textarea
+                id='note'
+                cols='90'
+                rows='23'
+                class='m-8 text-center'
+                style={{backgroundImage:""}}
+                onChange={e => setFormNote(e.target.value)}
+                placeholder='Click to Begin Note Here'
+                value={formNote}
+                />
+              </div>
+            </div>
           </div>
 
-        </div>
-        </div>
-
-          <p>-</p>
-          <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">Submit Memory</button>
+          <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 mt-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">Submit Memory</button>
         </form>
       </div>
     )
