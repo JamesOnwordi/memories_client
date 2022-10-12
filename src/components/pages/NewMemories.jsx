@@ -18,7 +18,7 @@ export default function NewMemories() {
       },
       maxFiles: 20,
       noDragEventsBubbling: true,
-      onDropAccepted: files => console.log(files),
+      onDropAccepted: files => setFormImg(files),
       onDropRejected: () => setMsg('Please upload image files only')
     })
   
@@ -64,24 +64,22 @@ export default function NewMemories() {
           encType='multipart/form'
           
         >
-          <div className='flex ...'>
-            <section className='container'>
+          <div className='flex ... justify-around'>
+            <section className='w-1/2 bg-slate-200 border-2 border-black border-dashed'>
               <div {...getRootProps({
-                className: 'dropzone',
-                style: {
-                  border: '1px solid black'
-                }
+                className: 'dropzone flex w-full h-full',
               })}>
                 <label htmlFor='image-upload' hidden>Upload photos</label>
                 <input {...getInputProps({
-                  id: 'image-upload'
+                  id: 'image-upload',
+                  ref: inputRef
                 })}
                 />
-                <p>Draggin n droppin</p>
+                <p className='justify-self-center self-center'>Draggin n droppin</p>
               </div>
             </section>
 
-            <div className='flex-1 ... bg-slate-400'>
+            <div className='flex-1 ... w-1/2 bg-slate-400'>
               <div className='text-3xl mt-4'>
                 <label htmlFor='title'> </label>
                 <input
@@ -94,7 +92,7 @@ export default function NewMemories() {
                 />
               </div>
   
-              <div className=' text-1xl'>
+              <div className='text-1xl'>
                 <label htmlFor='note'> </label>
                 <textarea
                 id='note'
