@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import Login from './Login'
 import Register from './Register'
 import '../../Style/Welcome.css'
@@ -28,11 +29,11 @@ export default function Welcome({ currentUser, setCurrentUser }) {
 		<div className='flex'>
 			{displayLogin ? loginForm : signupForm}
 
-			<div className='mx-9'>
+			<div className='mx-12'>
 				<p>
 					Have you ever just felt so moody that you reflected back on your life 
 					yes and I mean to the point where you almost cried?
-					Imagine you had a place to go back to remeber those moments 
+					Imagine you had a place to go back to remeber those moments.
 				</p>
 
 				<p>
@@ -45,23 +46,39 @@ export default function Welcome({ currentUser, setCurrentUser }) {
 					how the whole process went for you?
 				</p>
 
-				<h1>
-					Memory is the app for you 
-				</h1>
+				<p>
+					<strong>Memories is the app for you!</strong>
+				</p>
 
 				<p>
-					Memory keeps the most important pictures of an experience you are going through 
+					Memories keeps the most important pictures of an experience you are going through 
 					it also provides you with the option to keep a Journal of what you are feeling at the moment 
 					about the experience you are having it provides you with.
 				</p>
-			</div >
+			</div>
 		</div>
 	)
 
 	const yesUser =(
-		<>
-			<p className='text-center text-lg'>Welcome to our app</p>
-		</>
+		<div className='text-center text-lg'>
+			<p>Welcome!</p>
+			
+			<p>
+				To get started with our app,
+				<Link to='/memories/new'>
+					<span className='text-blue-500 hover:cursor-pointer'> click here </span>
+				</Link>
+				to create a new memory.
+			</p>
+
+			<p>
+				Already have some memories saved?
+				<Link to="/memories">
+					<span className='text-blue-500 hover:cursor-pointer'> Click here </span>
+				</Link>
+				to reminisce about all the good (or bad) times.
+			</p>
+		</div>
 	)
 
 	return (
@@ -73,51 +90,58 @@ export default function Welcome({ currentUser, setCurrentUser }) {
 			</div>
 
 
-			<footer>
-				<h3 className="text-sm font-medium text-gray-900 text-center mb-5" >About the Developers</h3>
+			<footer className='container mx-auto lg:absolute inset-x-0 bottom-0'>
+				<h2 className="text-lg font-medium text-gray-900 text-center mb-4" >About the Developers</h2>
 
-				<div className='developersZone'>
-					<div className='centerItem'>
-						<div className='developersBox'>
-							<p >James</p>
-							
-							<img className='devImage' src="https://i.pinimg.com/564x/36/d2/38/36d238e34622b54fc3f5a920a2c03f23.jpg" height="300px" width="300px" />
-							<p>
-								contact
-							</p>
-							<p> 
-								Little about
-							</p>
-						</div>
+				<div className='flex justify-around items-end'>
+					<div className='px-4'>
+						<h3>James</h3>
+						
+						<img src="https://i.pinimg.com/564x/36/d2/38/36d238e34622b54fc3f5a920a2c03f23.jpg"
+							style={{ height: 300, width: 300 }}
+						/>
+
+						<p>
+							contact
+						</p>
+
+						<p> 
+							Little about
+						</p>
 					</div>
 
-					<div className='centerItem'>
-						<div className='developersBox'>
-							<p>Allen</p>
-							
-							
-							<img className='devImage' src="https://play-lh.googleusercontent.com/7Ac5TgaL15Ra4bvFVHJKCdJp4qvnL4djZj5bKc6RN-MZjzrvkeHbJytek0NPTSdZcp8" width="250px" />
-							<p>
-								contact
-							</p>
-							<p> 
-								Little about
-							</p>
-						</div>
+					<div className='px-4'>
+						<h3>Allen</h3>
+						
+						<img src="https://play-lh.googleusercontent.com/7Ac5TgaL15Ra4bvFVHJKCdJp4qvnL4djZj5bKc6RN-MZjzrvkeHbJytek0NPTSdZcp8"
+							width='300'
+							height='300' 
+						/>
+
+						<p>
+							contact
+						</p>
+
+						<p> 
+							Little about
+						</p>
 					</div>
 
-					<div className='centerItem'>
-						<div className='developersBox'>
-							<p>Elijah</p>
-							
-							<img className='devImage' src="https://www.clipstudio.net/wp-content/uploads/2020/06/0131_005_en-us.jpg" width="300px" />
-							<p>
-								contact
-							</p>
-							<p> 
-								Little about
-							</p>
-						</div>
+					<div className='px-4'>
+						<h3>Elijah</h3>
+						
+						<img src="https://www.clipstudio.net/wp-content/uploads/2020/06/0131_005_en-us.jpg"
+							width='300'
+							height='300' 
+						/>
+
+						<p>
+							contact
+						</p>
+
+						<p> 
+							Little about
+						</p>
 					</div>
 				</div>
 			</footer>
