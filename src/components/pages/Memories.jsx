@@ -70,18 +70,19 @@ export default function Memories() {
     const displayMemories = memories.map((memory, id) => {
         return (
 
-            <div key={memory.id} style={{ margin: "30px" }}>
-                <p>{memory.title}</p>
+            
+            
+            <div key={memory.id} className='container mx-auto shadow-lg rounded-lg max-w-md hover:shadow-2xl transition duration-300' style={{ margin: "30px" }}>
                 <Link to={`/memories/${memory.id}`}>
-                {memory.image ? <img src={memory.image.url} alt={`img${id}`} /> : "No image to display"}
+                {memory.image ? <img class="rounded-t-lg w-full" src={memory.image.url} alt={`img${id}`} /> :  <img class="rounded-t-lg w-full" src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930" alt={`img${id}`} /> }
                 </Link>
+                <div class="p-6">
+                <p className="md:text-1xl text-xl hover:text-indigo-600 transition duration-200  font-bold text-gray-900 ">{memory.title}</p>
+
                 <p>{memory.note}</p>
-                <p>{memory.date}</p>
-                <Link to={`/memories/${memory.id}/edit`}>
-                    <button>Edit</button>
-                </Link>
-                <span> </span>
-                <button onClick={() => handleDelete(memory.id)}>Delete</button>
+                </div>
+                <p >{memory.date}</p>
+                <button  className="rounded-none ..." onClick={() => handleDelete(memory.id)}>Delete</button>
             </div>
 
 
@@ -91,8 +92,12 @@ export default function Memories() {
 
 
     return (
+        <div class="bg-gray-100 min-h-screen py-32 px-10 ">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-x-10 xl-grid-cols-4 gap-y-10 gap-x-6 "> 
         <div style={{ display: "flex", flexWrap: "wrap" }}>
             {displayMemories}
+        </div>
+        </div>
         </div>
     )
 }
