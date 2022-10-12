@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import '../../Style/Welcome.css'
 
 export default function NewMemories() {
     const [formTitle, setFormTitle] = useState('')
@@ -43,15 +44,20 @@ export default function NewMemories() {
     }
   
     return (
-      <>
-        <h1>Create a new Memory!</h1>
+      <div className='text-center'>
+        <p>-</p>
+        <h1 className='text-xl'>Create a new Memory!</h1>
+        <p>-</p>
 
         <h3>{msg}</h3>
 
         <form 
           onSubmit={handleSubmit}
           encType='multipart/form'
+          
         >
+        <div className='flex ...'>
+          <div className='flex-1 ...'>
           <div>
             <label htmlFor='image-upload'>Upload photos: </label>
             <input 
@@ -63,28 +69,42 @@ export default function NewMemories() {
               onChange={e => setFormImg(e.target.files)}
             />
           </div>
-  
-          <div>
-            <label htmlFor='title'>Title: </label>
+        </div>
+
+        <div className='flex-1 ... bg-slate-400'>
+          <p> - </p>
+          <div className=' text-3xl'>
+            <label htmlFor='title'> </label>
             <input
               type='text'
               id='title'
+              className='text-center'
+              placeholder='Title'
               onChange={e => setFormTitle(e.target.value)}
               value={formTitle}
             />
           </div>
   
-          <div>
-            <label htmlFor='note'>Note: </label>
+          <div className=' text-1xl'>
+            <label htmlFor='note'> </label>
             <textarea
             id='note'
+            cols='90'
+            rows='23'
+            class='m-8 text-center'
+            style={{backgroundImage:""}}
             onChange={e => setFormNote(e.target.value)}
+            placeholder='Click to Begin Note Here'
             value={formNote}
             />
           </div>
-  
-          <input type="submit" />
+
+        </div>
+        </div>
+
+          <p>-</p>
+          <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">Submit Memory</button>
         </form>
-      </>
+      </div>
     )
 }
