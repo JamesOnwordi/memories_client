@@ -92,21 +92,22 @@ export default function NewMemories() {
                 />
               </div>
   
-              <div className='text-1xl'>
-                <label htmlFor='note'> </label>
-                <textarea
-                id='note'
-                cols='90'
-                rows='23'
-                class='m-8 text-center'
-                style={{backgroundImage:""}}
-                onChange={e => setFormNote(e.target.value)}
-                placeholder='Click to Begin Note Here'
-                value={formNote}
-                />
-              </div>
-            </div>
+          <div className=' text-1xl'>
+            <label htmlFor='note'> </label>
+            <textarea
+            id='note'
+            cols='90'
+            rows='23'
+            className='m-8 text-center'
+            style={{backgroundImage:""}}
+            onChange={e => setFormNote(e.target.value)}
+            placeholder='Click to Begin Note Here'
+            value={formNote}
+            />
           </div>
+
+        </div>
+        </div>
 
           <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 mt-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">Submit Memory</button>
         </form>
