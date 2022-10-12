@@ -77,12 +77,18 @@ export default function Memories() {
                 {memory.image ? <img class="rounded-t-lg w-full" src={memory.image.url} alt={`img${id}`} /> :  <img class="rounded-t-lg w-full" src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930" alt={`img${id}`} /> }
                 </Link>
                 <div class="p-6">
-                <p className="md:text-1xl text-xl hover:text-indigo-600 transition duration-200  font-bold text-gray-900 ">{memory.title}</p>
+                <p className="md:text-1xl text-xl hover:text-indigo-600 transition duration-200  font-bold text-gray-900 text-center">{memory.title}</p>
 
-                <p>{memory.note}</p>
+                <p>{memory.note.substring(0,50)}</p>
                 </div>
                 <p >{memory.date}</p>
-                <button  className="rounded-none ..." onClick={() => handleDelete(memory.id)}>Delete</button>
+                <div className='text-center my-4'>
+                <Link to={`/memories/${memory.id}/edit`}>
+                    <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 mx-8 rounded" >Edit</button>
+                </Link>
+                <button  className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-8" onClick={() => handleDelete(memory.id)}>Delete</button>
+                </div>
+                
             </div>
 
 
@@ -94,9 +100,7 @@ export default function Memories() {
     return (
         <div class="bg-gray-100 min-h-screen py-32 px-10 ">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-x-10 xl-grid-cols-4 gap-y-10 gap-x-6 "> 
-        <div style={{ display: "flex", flexWrap: "wrap" }}>
             {displayMemories}
-        </div>
         </div>
         </div>
     )
