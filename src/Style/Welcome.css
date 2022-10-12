@@ -1,16 +1,5 @@
-.developersZone{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-}
-.centerItem{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.developersBox{
-    display: inline-block;  
-}
-.devImage{
-    width: 300px;
-    height: 300px;
+@media (max-height: 900px) {
+    footer {
+        position: relative;
+    }
 }
