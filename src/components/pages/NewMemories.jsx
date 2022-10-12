@@ -12,7 +12,12 @@ export default function NewMemories() {
   
     const inputRef = useRef(null)
     const navigate = useNavigate()
-    const { acceptedFiles, getRootProps, getInputProps } = useDropzone()
+    const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
+      accept: 'image/*',
+      maxFiles: 20,
+      noDragEventsBubbling: true,
+      onDrop: files => console.log(files)
+    })
   
     const handleSubmit = async e => {
       e.preventDefault()
@@ -57,12 +62,19 @@ export default function NewMemories() {
           
         >
           <div className='flex ...'>
-            <section>
-              <div {...getRootProps({className: 'dropzone'})}>
-                <input {...getRootProps()}
-                  id=''
+            <section className='container'>
+              <div {...getRootProps({
+                className: 'dropzone',
+                style: {
+                  border: '1px solid black'
+                }
+              })}>
+                <label htmlFor='image-upload' hidden>Upload photos</label>
+                <input {...getInputProps({
+                  id: 'image-upload'
+                })}
                 />
-                <p>dragin and droppin</p>
+                <p>Draggin n droppin</p>
               </div>
             </section>
 
