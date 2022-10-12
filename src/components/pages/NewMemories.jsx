@@ -13,10 +13,13 @@ export default function NewMemories() {
     const inputRef = useRef(null)
     const navigate = useNavigate()
     const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
-      accept: 'image/*',
+      accept: {
+        'image/*': []
+      },
       maxFiles: 20,
       noDragEventsBubbling: true,
-      onDrop: files => console.log(files)
+      onDropAccepted: files => console.log(files),
+      onDropRejected: () => setMsg('Please upload image files only')
     })
   
     const handleSubmit = async e => {
