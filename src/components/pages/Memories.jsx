@@ -41,7 +41,7 @@ export default function Memories() {
                     return ({
                         id: memory._id,
                         title: memory.title,
-                        image: memory.images[0] ? memory.images[0] : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfill0VxdWtC5GsoWnIiTzUu4GMzMuVlUMKA&usqp=CAU",
+                        image: memory.images[0],
                         note: memory.note,
                         date: memory.date
                     })
@@ -73,7 +73,7 @@ export default function Memories() {
             <div key={memory.id} style={{ margin: "30px" }}>
                 <p>{memory.title}</p>
                 <Link to={`/memories/${memory.id}`}>
-                    <img src={memory.image.url} alt={`img${id}`} />
+                {memory.image ? <img src={memory.image.url} alt={`img${id}`} /> : "No image to display"}
                 </Link>
                 <p>{memory.note}</p>
                 <p>{memory.date}</p>
