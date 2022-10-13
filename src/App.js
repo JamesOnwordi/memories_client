@@ -88,7 +88,7 @@ function App() {
 
           <Route 
             path="/memories/:id"
-            element={<Memory />}
+            element={<Memory currentUser={currentUser} setCurrentUser={setCurrentUser} />}
           />
 
           {/* conditionally render auth locked routes */}
