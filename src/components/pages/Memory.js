@@ -108,6 +108,7 @@ export default function Memory({ currentUser }) {
     const formData = new FormData()
     formData.append('comment', theComment)
     // pull token from local storage
+    
     const token = localStorage.getItem('jwt')
     // set request headers
     const options = {
