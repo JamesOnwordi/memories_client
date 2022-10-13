@@ -46,17 +46,13 @@ export default function NewMemories() {
         }
         // make req
         const { data } = await axios.post(process.env.REACT_APP_SERVER_URL + '/api-v1/memories', formData, options)
-        console.log(data)
-        // reset input val
-        if (inputRef.current) inputRef.current.value = ''
+        // console.log(data)
         navigate(`/memories/${data._id}`)
       } catch (err) {
         console.log(err)
         setMsg('ooooooooo noooooo 🤬')
       }
     }
-
-    console.log(inputRef)
   
     return (
       <div className='text-center container mx-auto'>
@@ -100,10 +96,7 @@ export default function NewMemories() {
                 <label htmlFor='note'> </label>
                 <textarea
                 id='note'
-                cols='90'
-                rows='23'
-                className='m-8 text-center'
-                style={{backgroundImage:""}}
+                className='mx-1 my-8 text-center box-border w-11/12 h-96'
                 onChange={e => setFormNote(e.target.value)}
                 placeholder='Click to Begin Note Here'
                 value={formNote}
