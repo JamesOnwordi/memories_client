@@ -38,10 +38,11 @@ export default function Memories() {
                 console.log(response.data)
                 const allMemories = response.data.map(memory => {
                     //console.log(memory)
+                    const length = (memory.images.length-1)
                     return ({
                         id: memory._id,
                         title: memory.title,
-                        image: memory.images[0],
+                        image: memory.images[length],
                         note: memory.note,
                         date: memory.date
                     })
@@ -72,21 +73,26 @@ export default function Memories() {
 
             
             
-            <div key={memory.id} className='container mx-auto shadow-lg rounded-lg max-w-md hover:shadow-2xl transition duration-300' style={{ margin: "30px" }}>
-                <Link to={`/memories/${memory.id}`}>
-                {memory.image ? <img className="rounded-t-lg w-full" src={memory.image.url} alt={`img${id}`} /> :  <img class="rounded-t-lg w-full" src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930" alt={`img${id}`} /> }
-                </Link>
-                <div className="p-6">
-                <p className="md:text-1xl text-xl hover:text-indigo-600 transition duration-200  font-bold text-gray-900 text-center">{memory.title}</p>
+            <div key={memory.id} className='container mx-auto shadow-lg  rounded-lg max-w-md hover:shadow-2xl transition duration-300' >
+                <div style={{height:"300px"}}>
 
-                <p>{memory.note.substring(0,50)}</p>
+                <Link to={`/memories/${memory.id}`}>
+                {memory.image ? <img className="rounded-t-lg w-full " src={memory.image.url} alt={`img${id}`} /> :  <img class="rounded-t-lg w-full h-64 " src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930" alt={`img${id}`} /> }
+                </Link>
+                </div>
+                <div className=''>
+                <div className="p-6">
+                <p className="md:text-1xl text-xl hover:text-indigo-600 transition duration-200  font-bold text-gray-900 text-center">{memory.title ? memory.title : "Edit to Add Title"}</p>
+
+                <p>{memory.note? memory.note.substring(0,50):"Edit to add notes"}</p>
                 </div>
                 <p >{memory.date}</p>
-                <div className='text-center my-4'>
+                <div className='text-center my-4 '>
                 <Link to={`/memories/${memory.id}/edit`}>
                     <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 mx-8 rounded" >Edit</button>
                 </Link>
                 <button  className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mx-8" onClick={() => handleDelete(memory.id)}>Delete</button>
+                </div>
                 </div>
                 
             </div>
@@ -98,9 +104,20 @@ export default function Memories() {
 
 
     return (
-        <div className="bg-gray-100 min-h-screen py-32 px-10 ">
+        <div>
+        <div className="  py-2 px-10  ">
+        <h1 className='text-xl text-center font-bold '>Memories 📖</h1>
+        </div>
+        <div className="bg-gray-100 min-h-screen py-32 px-10 text-center ">
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-x-10 xl-grid-cols-4 gap-y-10 gap-x-6 "> 
             {displayMemories}
+        </div >
+        <div className='my-8'>
+        <Link to={`/memories/new`}>
+                    <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 mx-8 rounded" >Create a New Memory</button>
+        </Link>
+        </div>
         </div>
         </div>
     )

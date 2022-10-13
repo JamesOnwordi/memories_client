@@ -91,7 +91,7 @@ export default function NewMemories() {
             id='note'
             cols='90'
             rows='23'
-            className='m-8 text-center'
+            class='m-8 text-center'
             style={{backgroundImage:""}}
             onChange={e => setFormNote(e.target.value)}
             placeholder='Click to Begin Note Here'
