@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useDropzone } from 'react-dropzone'
 import axios from 'axios'
 import '../../Style/Welcome.css'
 
@@ -11,6 +12,18 @@ export default function NewMemories() {
   
     const inputRef = useRef(null)
     const navigate = useNavigate()
+    const { getRootProps, getInputProps } = useDropzone({
+      accept: {
+        'image/*': []
+      },
+      maxFiles: 20,
+      noDragEventsBubbling: true,
+      onDropAccepted: files => {
+        setFormImg(files)
+        setMsg('Images ready for submission')
+      },
+      onDropRejected: () => setMsg('Please upload image files only')
+    })
   
     const handleSubmit = async e => {
       e.preventDefault()
@@ -35,75 +48,71 @@ export default function NewMemories() {
         const { data } = await axios.post(process.env.REACT_APP_SERVER_URL + '/api-v1/memories', formData, options)
         console.log(data)
         // reset input val
-        if (inputRef) inputRef.current.value = ''
+        if (inputRef.current) inputRef.current.value = ''
         navigate(`/memories/${data._id}`)
       } catch (err) {
         console.log(err)
         setMsg('ooooooooo noooooo 🤬')
       }
     }
+
+    console.log(inputRef)
   
     return (
-      <div className='text-center'>
-        <p>-</p>
-        <h1 className='text-xl'>Create a new Memory!</h1>
-        <p>-</p>
+      <div className='text-center container mx-auto'>
+        <h1 className='text-xl mt-4 mb-8'>Create a new Memory!</h1>
 
-        <h3>{msg}</h3>
+        <h3 className='text-center my-4'>{msg}</h3>
 
         <form 
           onSubmit={handleSubmit}
           encType='multipart/form'
           
         >
-        <div className='flex ...'>
-          <div className='flex-1 ...'>
-          <div>
-            <label htmlFor='image-upload'>Upload photos: </label>
-            <input 
-              type='file'
-              id='image-upload'
-              accept='images/*'
-              multiple
-              ref={inputRef}
-              onChange={e => setFormImg(e.target.files)}
-            />
-          </div>
-        </div>
+          <div className='flex ... justify-around'>
+            <section className='w-1/2 bg-slate-300 border-2 border-slate-500 border-dashed hover:cursor-pointer hover:bg-slate-200'>
+              <div {...getRootProps({
+                className: 'dropzone flex justify-center w-full h-full',
+              })}>
+                <label htmlFor='image-upload' hidden>Upload photos</label>
+                <input {...getInputProps()}
+                  id='image-upload'
+                  ref={inputRef}
+                />
+                <p className='self-center text-4xl mx-4'>Drag and drop photos you would like to upload here! Or click me to select images</p>
+              </div>
+            </section>
 
-        <div className='flex-1 ... bg-slate-400'>
-          <p> - </p>
-          <div className=' text-3xl'>
-            <label htmlFor='title'> </label>
-            <input
-              type='text'
-              id='title'
-              className='text-center'
-              placeholder='Title'
-              onChange={e => setFormTitle(e.target.value)}
-              value={formTitle}
-            />
-          </div>
+            <div className='flex-1 ... w-1/2 bg-slate-400'>
+              <div className='text-3xl mt-4'>
+                <label htmlFor='title'> </label>
+                <input
+                  type='text'
+                  id='title'
+                  className='text-center'
+                  placeholder='Title'
+                  onChange={e => setFormTitle(e.target.value)}
+                  value={formTitle}
+                />
+              </div>
   
-          <div className=' text-1xl'>
-            <label htmlFor='note'> </label>
-            <textarea
-            id='note'
-            cols='90'
-            rows='23'
-            class='m-8 text-center'
-            style={{backgroundImage:""}}
-            onChange={e => setFormNote(e.target.value)}
-            placeholder='Click to Begin Note Here'
-            value={formNote}
-            />
+              <div className=' text-1xl'>
+                <label htmlFor='note'> </label>
+                <textarea
+                id='note'
+                cols='90'
+                rows='23'
+                className='m-8 text-center'
+                style={{backgroundImage:""}}
+                onChange={e => setFormNote(e.target.value)}
+                placeholder='Click to Begin Note Here'
+                value={formNote}
+                />
+              </div>
+            </div>
           </div>
 
-        </div>
-        </div>
-
-          <p>-</p>
-          <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">Submit Memory</button>
+          <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 mt-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">Submit Memory</button>
         </form>
       </div>
     )
