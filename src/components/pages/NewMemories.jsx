@@ -12,13 +12,16 @@ export default function NewMemories() {
   
     const inputRef = useRef(null)
     const navigate = useNavigate()
-    const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
+    const { getRootProps, getInputProps } = useDropzone({
       accept: {
         'image/*': []
       },
       maxFiles: 20,
       noDragEventsBubbling: true,
-      onDropAccepted: files => setFormImg(files),
+      onDropAccepted: files => {
+        setFormImg(files)
+        setMsg('Images ready for submission')
+      },
       onDropRejected: () => setMsg('Please upload image files only')
     })
   
@@ -45,19 +48,21 @@ export default function NewMemories() {
         const { data } = await axios.post(process.env.REACT_APP_SERVER_URL + '/api-v1/memories', formData, options)
         console.log(data)
         // reset input val
-        if (inputRef) inputRef.current.value = ''
+        if (inputRef.current) inputRef.current.value = ''
         navigate(`/memories/${data._id}`)
       } catch (err) {
         console.log(err)
         setMsg('ooooooooo noooooo 🤬')
       }
     }
+
+    console.log(inputRef)
   
     return (
-      <div className='text-center'>
+      <div className='text-center container mx-auto'>
         <h1 className='text-xl mt-4 mb-8'>Create a new Memory!</h1>
 
-        <h3 className='text-center'>{msg}</h3>
+        <h3 className='text-center my-4'>{msg}</h3>
 
         <form 
           onSubmit={handleSubmit}
@@ -65,17 +70,16 @@ export default function NewMemories() {
           
         >
           <div className='flex ... justify-around'>
-            <section className='w-1/2 bg-slate-200 border-2 border-black border-dashed'>
+            <section className='w-1/2 bg-slate-300 border-2 border-slate-500 border-dashed hover:cursor-pointer hover:bg-slate-200'>
               <div {...getRootProps({
-                className: 'dropzone flex w-full h-full',
+                className: 'dropzone flex justify-center w-full h-full',
               })}>
                 <label htmlFor='image-upload' hidden>Upload photos</label>
-                <input {...getInputProps({
-                  id: 'image-upload',
-                  ref: inputRef
-                })}
+                <input {...getInputProps()}
+                  id='image-upload'
+                  ref={inputRef}
                 />
-                <p className='justify-self-center self-center'>Draggin n droppin</p>
+                <p className='self-center text-4xl mx-4'>Drag and drop photos you would like to upload here! Or click me to select images</p>
               </div>
             </section>
 
