@@ -188,19 +188,19 @@ console.log(comments)
       {thumbImages}
     </Flicking>
 
-    <div class="antialiased mx-auto max-w-screen-xl">
+    <div className="antialiased mx-auto max-w-screen-xl">
       <div className='text-center mt-6'>
-      <h3 class="mb-4 text-3xl font-bold text-gray-900">{memory.title}</h3>
+      <h3 className="mb-4 text-3xl font-bold text-gray-900">{memory.title}</h3>
       <div className='container mx-auto'>
         <p className='text-xl font-mono'> {memory.note} </p>
       </div>
       </div>
       </div>
       
-    <div class="antialiased mx-auto max-w-screen-xl">
+    <div className="antialiased mx-auto max-w-screen-xl">
     <div className='text-center mt-6'>
     </div>
-      <div class="space-y-4">
+      <div className="space-y-4">
         <p > {comments} </p>
         <div className='text-center'>
         <p className='py-4' onClick={submitComment} ></p>

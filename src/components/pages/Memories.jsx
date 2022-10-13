@@ -77,7 +77,7 @@ export default function Memories() {
                 <div style={{height:"300px"}}>
 
                 <Link to={`/memories/${memory.id}`}>
-                {memory.image ? <img className="rounded-t-lg w-full " src={memory.image.url} alt={`img${id}`} /> :  <img class="rounded-t-lg w-full h-64 " src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930" alt={`img${id}`} /> }
+                {memory.image ? <img className="rounded-t-lg w-full " src={memory.image.url} alt={`img${id}`} /> :  <img className="rounded-t-lg w-full h-64 " src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930" alt={`img${id}`} /> }
                 </Link>
                 </div>
                 <div className=''>

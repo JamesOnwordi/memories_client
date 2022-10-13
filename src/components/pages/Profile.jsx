@@ -59,17 +59,17 @@ export default function Profile({ currentUser, handleLogout }) {
 
 
 	return (
-		<div class="rounded-3xl overflow-hidden shadow-xl mx-auto max-w-screen-xl my-3 bg-blue-500">
-			<img src="https://i.imgur.com/dYcYQ7E.png" class="w-full" alt="pbackground" />
-			<div class="flex justify-center -mt-8">
-				<img src="https://i.imgur.com/8Km9tLL.jpg" class="rounded-5xl border-solid border-white border-2 -mt-1" alt="profilePic" />
+		<div className="rounded-3xl overflow-hidden shadow-xl mx-auto max-w-screen-xl my-3 bg-blue-500">
+			<img src="https://i.imgur.com/dYcYQ7E.png" className="w-full" alt="pbackground" />
+			<div className="flex justify-center -mt-8">
+				<img src="https://i.imgur.com/8Km9tLL.jpg" className="rounded-5xl border-solid border-white border-2 -mt-1" alt="profilePic" />
 			</div>
-			<div class="text-center px-3 pb-6 pt-2">
-				<h3 class="text-white text-xl bold font-sans">User Name: {currentUser.name}</h3>
-				<p class="mt-2 font-sans text-xl font-light text-white">Email: {currentUser.email}</p>
+			<div className="text-center px-3 pb-6 pt-2">
+				<h3 className="text-white text-xl bold font-sans">User Name: {currentUser.name}</h3>
+				<p className="mt-2 font-sans text-xl font-light text-white">Email: {currentUser.email}</p>
 			</div>
-			<div class="flex justify-center pb-3 text-white">
-				<div class="text-center text-xl">
+			<div className="flex justify-center pb-3 text-white">
+				<div className="text-center text-xl">
 					<h2>{memory.length}</h2>
 					<Link to="/memories">
 					<p>Memories</p>
