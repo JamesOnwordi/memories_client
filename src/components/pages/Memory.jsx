@@ -14,8 +14,8 @@ export default function Memory({ currentUser }) {
   const flicking1 = useRef();
   const [plugins, setPlugins] = useState([]);
   const [memory, setMemory] = useState({});
-  const [panelImages, setPanelImages] = useState([])
-  const [thumbImages, setThumbImages] = useState([])
+  const [panelImages, setPanelImages] = useState([]);
+  const [thumbImages, setThumbImages] = useState([]);
 
   useEffect(() => {
     // pull token from local storage
