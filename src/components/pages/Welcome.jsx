@@ -33,18 +33,18 @@ export default function Welcome({ currentUser, setCurrentUser }) {
 			<div className='mx-12'>
 				<p>
 					Have you ever just felt so moody that you reflected back on your life 
-					yes and I mean to the point where you almost cried?
+					 to the point where you almost cried ?
 					Imagine you had a place to go back to remeber those moments.
 				</p>
 
 				<p>
-					Have you felt the need to keep a documentation of what you were going through 
-					because you wouldn't want to forget such experience?
+					Have you felt the need to keep a documentation of what you are going through 
+					because you don't want to forget an event?
 				</p>
 
 				<p>
-					Or have you ever taken a bootcamp course and you wish you could keep a record of 
-					how the whole process went for you?
+					Perharps you have taken a bootcamp course and you wish you could keep a record of 
+					your trip to mount stupid ?
 				</p>
 
 				<p>
@@ -52,9 +52,9 @@ export default function Welcome({ currentUser, setCurrentUser }) {
 				</p>
 
 				<p>
-					Memories keeps the most important pictures of an experience you are going through 
-					it also provides you with the option to keep a Journal of what you are feeling at the moment 
-					about the experience you are having it provides you with.
+					Memories keeps the pictures of an important event 
+					and provides you with the option to keep a journal of what you are 
+					feeling at the moment.
 				</p>
 			</div>
 		</div>
@@ -99,7 +99,7 @@ export default function Welcome({ currentUser, setCurrentUser }) {
 						<h3>James</h3>
 						
 						<img src="https://i.pinimg.com/564x/36/d2/38/36d238e34622b54fc3f5a920a2c03f23.jpg"
-							style={{ height: 300, width: 300 }}
+							style={{ height: 270, width: 270 }}
 						/>
 
 						<p>
@@ -115,7 +115,7 @@ export default function Welcome({ currentUser, setCurrentUser }) {
 						<h3>Allen</h3>
 						
 						<img src="https://play-lh.googleusercontent.com/7Ac5TgaL15Ra4bvFVHJKCdJp4qvnL4djZj5bKc6RN-MZjzrvkeHbJytek0NPTSdZcp8"
-							width='300'
+							width='270'
 							height='300' 
 						/>
 
@@ -132,7 +132,7 @@ export default function Welcome({ currentUser, setCurrentUser }) {
 						<h3>Elijah</h3>
 						
 						<img src="https://www.clipstudio.net/wp-content/uploads/2020/06/0131_005_en-us.jpg"
-							width='300'
+							width='270'
 							height='300' 
 						/>
 
