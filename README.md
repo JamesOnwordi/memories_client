@@ -1,6 +1,6 @@
-# Memories Server
+# Memories
 
-Getting Old!!! no problem Memory is an app that allows users to keep a journal of any important events or memories. Users will be able to post their memories with images of the events as well as some notes with their thoughts.
+Getting Old!!! no problem Memory is an app that allows users to keep a journal of important memories. Users will be able to post their memories with images of the events as well as some notes with their thoughts.
 
 ## Site Preview
 ![Preview of Memories site](https://res.cloudinary.com/dazgyyyvj/image/upload/v1665618623/seir-808-p3/Screenshot_from_2022-10-12_16-49-37_nah6bk.png)
