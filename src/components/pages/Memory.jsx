@@ -6,7 +6,7 @@ import "@egjs/flicking-plugins/dist/flicking-plugins.css";
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import './memory.css';
-import { useAccordion } from '@material-tailwind/react';
+import { Textarea, useAccordion } from '@material-tailwind/react';
 
 
 export default function Memory({ currentUser }) {
@@ -192,7 +192,9 @@ console.log(comments)
       <div className='text-center mt-6'>
       <h3 className="mb-4 text-3xl font-bold text-gray-900">{memory.title}</h3>
       <div className='container mx-auto'>
+        {/* <Textarea className='text-xl font-mono container mx-auto h-80' value ={memory.note}/> */}
         <p className='text-xl font-mono'> {memory.note} </p>
+        <p></p>
       </div>
       </div>
       </div>

@@ -95,7 +95,7 @@ export default function Welcome({ currentUser, setCurrentUser }) {
 				<h2 className="text-lg font-medium text-gray-900 text-center mb-4" >About the Developers</h2>
 
 				<div className='flex justify-around items-end'>
-					<div className='px-4'>
+					<div className='px-4 text-center'>
 						<h3>James</h3>
 						
 						<img src="https://i.pinimg.com/564x/36/d2/38/36d238e34622b54fc3f5a920a2c03f23.jpg"
@@ -103,15 +103,14 @@ export default function Welcome({ currentUser, setCurrentUser }) {
 						/>
 
 						<p>
-							contact
+							<a href='https://www.linkedin.com/in/james-onwordi'><button> click here! to link with James</button></a>
 						</p>
 
 						<p> 
-							Little about
 						</p>
 					</div>
 
-					<div className='px-4'>
+					<div className='px-4 text-center'>
 						<h3>Allen</h3>
 						
 						<img src="https://play-lh.googleusercontent.com/7Ac5TgaL15Ra4bvFVHJKCdJp4qvnL4djZj5bKc6RN-MZjzrvkeHbJytek0NPTSdZcp8"
@@ -120,15 +119,13 @@ export default function Welcome({ currentUser, setCurrentUser }) {
 						/>
 
 						<p>
-							contact
+							<a href='https://www.linkedin.com/in/allen-tang13/'><button> click here! to link with Allen</button></a>
 						</p>
 
-						<p> 
-							Little about
-						</p>
+						
 					</div>
 
-					<div className='px-4'>
+					<div className='px-4 text-center'>
 						<h3>Elijah</h3>
 						
 						<img src="https://www.clipstudio.net/wp-content/uploads/2020/06/0131_005_en-us.jpg"
@@ -137,12 +134,10 @@ export default function Welcome({ currentUser, setCurrentUser }) {
 						/>
 
 						<p>
-							contact
+						<a href='https://www.linkedin.com/in/elijah-kubes-196432248/'><button> click here! to link with Allen</button></a>
 						</p>
 
-						<p> 
-							Little about
-						</p>
+						
 					</div>
 				</div>
 			</footer>
