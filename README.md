@@ -4,7 +4,7 @@ Getting Old!!! no problem Memory is an app that allows users to keep a journal o
 
 ## Site Preview
 ![Preview of Memories site](https://res.cloudinary.com/dazgyyyvj/image/upload/v1665618623/seir-808-p3/Screenshot_from_2022-10-12_16-49-37_nah6bk.png)
-[Check it out here!](https://superb-parfait-91c6b9.netlify.app/)
+[Check it out here!](https://astounding-cobbler-d8830e.netlify.app/)
 
 ## Installation Instructions
 If you would like to use this app locally, feel free to follow these instructions:
