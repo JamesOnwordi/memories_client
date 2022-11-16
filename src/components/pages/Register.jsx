@@ -5,9 +5,9 @@ import { Navigate } from 'react-router-dom'
 
 export default function Register({ currentUser, setCurrentUser, setDisplayLogin, welcomePage }) {
 	// state for the controlled form
-	const [name, setName] = useState('')
-	const [email, setEmail] = useState('')
-	const [password, setPassword] = useState('')
+	const [name, setName] = useState('Visitor')
+	const [email, setEmail] = useState('visitor@clickSignUp.com')
+	const [password, setPassword] = useState('1234')
 	const [msg, setMsg] = useState('')
 
 	// submit event handler

@@ -103,7 +103,7 @@ export default function Navbar({ currentUser, handleLogout }) {
 	return (
 		<nav>
 			{/* user always sees this section */}
-			{currentUser ? loggedIn : loggedOut}
+			{currentUser ? loggedIn : loggedIn}
 		</nav>
 	)
 }

@@ -5,8 +5,8 @@ import { Navigate } from 'react-router-dom'
 
 export default function Login({ currentUser, setCurrentUser, welcomePage, setDisplayLogin }) {
 	// state for the controlled form
-	const [email, setEmail] = useState('')
-	const [password, setPassword] = useState('')
+	const [email, setEmail] = useState('visitor@clickSignUp.com')
+	const [password, setPassword] = useState('1234')
 	const [msg, setMsg] = useState('')
 
 	// submit event handler
