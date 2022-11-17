@@ -91,7 +91,7 @@ export default function Welcome({ currentUser, setCurrentUser }) {
 			</div>
 
 
-			<footer className='container mx-auto lg:absolute inset-x-0 bottom-0'>
+			{/* <footer className='container mx-auto lg:absolute inset-x-0 bottom-0'>
 				<h2 className="text-lg font-medium text-gray-900 text-center mb-4" >About the Developers</h2>
 
 				<div className='flex justify-around items-end'>
@@ -140,7 +140,7 @@ export default function Welcome({ currentUser, setCurrentUser }) {
 						
 					</div>
 				</div>
-			</footer>
+			</footer> */}
 		</div>
 	)
 }
